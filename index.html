@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special Person ❤️</title>
+    <!-- Importing Cute Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Nunito:wght@400;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-pink: #ffb7c5;
+            --deep-pink: #ff6b81;
+            --lavender: #e6e6fa;
+            --soft-lavender: #dcd6f7;
+            --white: #ffffff;
+            --text-dark: #4a4a4a;
+            --text-soft: #7a7a7a;
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #fff0f3 0%, #e6e6fa 50%, #ffe6fa 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-pink);
+            border-radius: 10px;
+        }
+
+        /* --- Floating Background Particles --- */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            animation: floatUp linear infinite;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        /* --- Layout Containers --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 2.5rem;
+            color: var(--deep-pink);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--text-soft);
+        }
+
+        /* --- Glassmorphism Cards --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- Typing Animation Section --- */
+        .message-box {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            min-height: 150px; /* Prevent layout shift */
+        }
+
+        #typing-text {
+            border-right: 2px solid var(--deep-pink);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* --- Extra Cute Line --- */
+        .extra-line {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-soft);
+            margin-top: 20px;
+            font-size: 0.95rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown-container {
+            text-align: center;
+        }
+
+        .timer-label {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            margin-bottom: 10px;
+        }
+
+        .timer-display {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--deep-pink);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+
+        .time-unit span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            font-weight: 400;
+        }
+
+        /* --- Love Letters (Flip Cards) --- */
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .letter-card {
+            background-color: transparent;
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .letter-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .letter-card.flipped .letter-inner {
+            transform: rotateY(180deg);
+        }
+
+        .letter-front, .letter-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .letter-front {
+            background: linear-gradient(135deg, #fff, #ffe6fa);
+            border: 2px solid var(--primary-pink);
+            flex-direction: column;
+        }
+
+        .letter-front i {
+            font-size: 3rem;
+            color: var(--deep-pink);
+            margin-bottom: 10px;
+        }
+
+        .letter-back {
+            background: #fff;
+            color: var(--text-dark);
+            transform: rotateY(180deg);
+            border: 2px solid var(--lavender);
+            font-size: 0.9rem;
+        }
+
+        /* --- Random Quotes --- */
+        #quote-display {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--deep-pink);
+            min-height: 60px;
+            transition: opacity 0.5s ease;
+        }
+
+        /* --- Memory Wall --- */
+        .memory-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .sticky-note {
+            background: #fff9c4;
+            padding: 15px;
+            border-radius: 2px 2px 10px 2px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            color: #5d4037;
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+
+        .sticky-note:nth-child(even) {
+            background: #e1f5fe;
+            transform: rotate(2deg);
+        }
+        .sticky-note:nth-child(3n) {
+            background: #fce4ec;
+            transform: rotate(-1deg);
+        }
+
+        .sticky-note:hover {
+            transform: scale(1.1) rotate(0deg);
+            z-index: 10;
+        }
+
+        /* --- CTA Button --- */
+        .cta-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, var(--deep-pink), #ff8fa3);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 129, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 129, 0.6);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* --- Popup Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid var(--lavender);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-content h2 {
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .close-btn {
+            background: var(--lavender);
+            color: var(--text-dark);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .close-btn:hover {
+            background: var(--soft-lavender);
+        }
+
+        /* --- Music Control --- */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            border: 2px solid var(--primary-pink);
+            transition: transform 0.3s;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        .music-icon {
+            font-size: 1.2rem;
+            color: var(--deep-pink);
+        }
+
+        .music-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary-pink);
+            opacity: 0;
+        }
+
+        .playing .music-waves {
+            animation: ripple 1.5s infinite;
+        }
+        
+        .playing .music-waves:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes ripple {
+            0% { width: 100%; height: 100%; opacity: 0.8; }
+            100% { width: 200%; height: 200%; opacity: 0; }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .timer-display { font-size: 1.5rem; }
+            .time-unit { min-width: 60px; padding: 10px; }
+            .modal-content { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Particles Container -->
+    <div id="particles-container"></div>
+
+    <!-- Audio Control (Hidden) -->
+    <!-- Using a generic royalty-free calm piano track placeholder -->
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_5b82208955.mp3?filename=piano-moment-11652.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <div class="music-control" onclick="toggleMusic()">
+        <div class="music-waves"></div>
+        <div class="music-waves"></div>
+        <span class="music-icon">🎵</span>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Itni Der Offline Mat Raha Karo, Idiot ❤️</h1>
+            <p class="subtitle">Missing you every second...</p>
+        </header>
+
+        <!-- Main Message with Typing Effect -->
+        <section class="glass-card">
+            <div class="message-box">
+                <span id="typing-text"></span>
+            </div>
+            <div class="extra-line">
+                Tumhari chat khul jaye to din acha lagta hai, aur tum offline ho jao to lagta hai phone bhi udaas ho gaya hai. 🥺❤️
+            </div>
+        </section>
+
+        <!-- Countdown Timer -->
+        <section class="glass-card countdown-container">
+            <p class="timer-label">Aap Offline Hain: (Time since last seen)</p>
+            <div class="timer-display" id="timer">
+                <div class="time-unit"><span id="hours">00</span><span>Hours</span></div>
+                <div class="time-unit"><span id="minutes">00</span><span>Minutes</span></div>
+                <div class="time-unit"><span id="seconds">00</span><span>Seconds</span></div>
+            </div>
+        </section>
+
+        <!-- Random Quotes -->
+        <section class="glass-card" style="min-height: 120px; display: flex; align-items: center; justify-content: center;">
+            <div id="quote-display"></div>
+        </section>
+
+        <!-- Love Letters -->
+        <section class="glass-card">
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--deep-pink);">Touch the letters to open 💌</h3>
+            <div class="letters-grid">
+                <!-- Letter 1 -->
+                <div class="letter-card" onclick="flipCard(this)">
+                    <div class="letter-inner">
+                        <div class="letter-front">
+                            <i>💌</i>
+                            <span>For You</span>
+                        </div>
+                        <div class="letter-back">
+                            "You are the reason I smile everyday. Come back online soon!"
+                        </div>
+                    </div>
+                </div>
+                <!-- Letter 2 -->
+                <div class="letter-card" onclick="flipCard(this)">
+                    <div class="letter-inner">
+                        <div class="letter-front">
+                            <i>🐻</i>
+                            <span>Secret Note</span>
+                        </div>
+                        <div class="letter-back">
+                            "Main tumhe bohot miss karta hoon. Please jaldi ana."
+                        </div>
+                    </div>
+                </div>
+                <!-- Letter 3 -->
+                <div class="letter-card" onclick="flipCard(this)">
+                    <div class="letter-inner">
+                        <div class="letter-front">
+                            <i>✨</i>
+                            <span>Wish</span>
+                        </div>
+                        <div class="letter-back">
+                            "I wish I could hug you right now through the screen."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memory Wall -->
+        <section class="glass-card">
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--deep-pink);">Memory Wall 🌸</h3>
+            <div class="memory-wall">
+                <div class="sticky-note">Your cute laugh 😂</div>
+                <div class="sticky-note">Late night talks 🌙</div>
+                <div class="sticky-note">Your annoying silence 😒</div>
+                <div class="sticky-note">When you say "Hmmm" 😤</div>
+                <div class="sticky-note">Our first chat 🥺</div>
+                <div class="sticky-note">Tumhari surat 🐹</div>
+            </div>
+        </section>
+
+        <!-- CTA Button -->
+        <div class="cta-container">
+            <button class="cta-btn" onclick="showPopup()">Madam, Ab Online Aa Jao 🥺💕</button>
+        </div>
+
+        <footer style="text-align: center; font-size: 0.8rem; color: var(--text-soft); margin-bottom: 20px;">
+            Made with ❤️ just for you.
+        </footer>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="modal-overlay" id="popup-modal">
+        <div class="modal-content">
+            <h2>Hey You! ❤️</h2>
+            <p>Koi tumhara intezar kar raha hai aur uska dil tumhare bina nahi lag raha. 💖</p>
+            <button class="close-btn" onclick="closePopup()">Theek Hai, Ja Rahi Hoon 😘</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Configuration ---
+        // Set a fictional "Offline Since" time. 
+        // Here we set it to 2 hours before the current page load for demonstration.
+        const offlineStartTime = new Date();
+        offlineStartTime.setHours(offlineStartTime.getHours() - 2); 
+
+        const messageToType = `Tum shayad sirf thori der ke liye offline hoti ho, lekin mera dil us thori der ko bohat lamba mehsoos karta hai. Jab tum online hoti ho to sab kuch acha lagta hai, aur jab tum gayab ho jaati ho to har notification check karne ka dil karta hai. Is liye itni der offline mat raha karo, idiot. ❤️`;
+
+        const quotes = [
+            "You are my favorite notification. 📱❤️",
+            "Distance means so little when someone means so much. 🌍",
+            "Every moment feels like a lifetime when you are gone. ⏳",
+            "I miss you more than coffee. ☕💔",
+            "You are the missing piece to my puzzle. 🧩",
+            "Come back, I have tea and stories waiting. ☕📖"
+        ];
+
+        // --- 1. Typing Animation ---
+        function typeWriter() {
+            const element = document.getElementById('typing-text');
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < messageToType.length) {
+                    element.innerHTML += messageToType.charAt(i);
+                    i++;
+                    setTimeout(type, 50); // Typing speed
+                }
+            }
+            type();
+        }
+
+        // --- 2. Countdown Timer ---
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - offlineStartTime;
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+
+        // --- 3. Random Quotes ---
+        function updateQuote() {
+            const quoteElement = document.getElementById('quote-display');
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            
+            // Fade out, change text, fade in
+            quoteElement.style.opacity = 0;
+            setTimeout(() => {
+                quoteElement.innerText = `"${randomQuote}"`;
+                quoteElement.style.opacity = 1;
+            }, 500);
+        }
+        
+        // Change quote every 5 seconds
+        setInterval(updateQuote, 5000);
+        updateQuote(); // Initial call
+
+        // --- 4. Letter Flip Interaction ---
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        // --- 5. Popup Logic ---
+        function showPopup() {
+            document.getElementById('popup-modal').classList.add('active');
+            createHeartExplosion();
+        }
+
+        function closePopup() {
+            document.getElementById('popup-modal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('popup-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // --- 6. Background Music ---
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.querySelector('.music-control');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.classList.remove('playing');
+            } else {
+                music.play();
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // --- 7. Floating Particles & Hearts ---
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const emojis = ['❤️', '✨', '🌸', '☁️', '🌙'];
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // Random positioning
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                
+                container.appendChild(particle);
+
+                // Cleanup
+                setTimeout(() => {
+                    particle.remove();
+                }, 10000);
+            }, 500); // Spawn rate
+        }
+
+        // Extra heart explosion on button click
+        function createHeartExplosion() {
+            for(let i=0; i<10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerText = '💖';
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = '2rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.transition = 'all 1s ease-out';
+                    heart.style.zIndex = 2000;
+                    document.body.appendChild(heart);
+
+                    // Random direction
+                    const x = (Math.random() - 0.5) * 300;
+                    const y = (Math.random() - 0.5) * 300;
+
+                    requestAnimationFrame(() => {
+                        heart.style.transform = `translate(${x}px, ${y}px) scale(0)`;
+                        heart.style.opacity = 0;
+                    });
+
+                    setTimeout(() => heart.remove(), 1000);
+                }, i * 100);
+            }
+        }
+
+        // --- Initialization ---
+        window.onload = function() {
+            typeWriter();
+            updateTimer();
+            createParticles();
+        };
+
+    </script>
+</body>
+</html>
